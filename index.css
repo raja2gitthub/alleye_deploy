@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-2;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-background-dark rounded;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary-green rounded shadow-[0_0_5px_rgba(0,255,0,0.7)];
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-cyber-blue;
+  }
+}
+
+@layer components {
+  /* Enhanced primary button with a more pronounced glow, fitting the cyber theme */
+  .btn-primary {
+    @apply shadow-[0_0_8px_hsl(var(--p)/0.6),_0_0_4px_hsl(var(--p)/0.5)] transition-all duration-300;
+  }
+  .btn-primary:hover {
+    @apply shadow-[0_0_16px_hsl(var(--p)/0.8),_0_0_8px_hsl(var(--p)/0.6)];
+  }
+
+  /* Custom styles for Cyber Security Player */
+  .nav-button {
+    @apply bg-cyber-blue text-background-dark border-none py-3 px-6 rounded-md cursor-pointer uppercase tracking-wider shadow-[0_0_10px_rgba(0,170,255,0.5)] transition-all duration-300 ease-in-out;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1em;
+  }
+  .nav-button:hover {
+    @apply bg-primary-green shadow-[0_0_15px_#00ff00] -translate-y-0.5 scale-105;
+  }
+
+  .option-button {
+    @apply relative overflow-hidden;
+  }
+  .option-button::before {
+    content: '';
+    @apply absolute top-0 -left-full w-full h-full transition-all duration-500;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+  }
+  .option-button:hover::before {
+    @apply left-full;
+  }
+}

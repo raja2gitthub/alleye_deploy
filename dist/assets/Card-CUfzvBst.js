@@ -1,0 +1,1 @@
+import{j as s}from"./index-EZVcE4NK.js";const o=({children:a,className:r,...d})=>s.jsx("div",{className:`card bg-base-200 shadow-lg ${r}`,...d,children:s.jsx("div",{className:"card-body",children:a})});export{o as C};

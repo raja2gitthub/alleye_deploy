@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alleye</title>
+    
+    <!-- Preconnect to critical domains for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://aistudiocdn.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://jspm.dev" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://bbxhdxdgharlyyioeblm.supabase.co">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <script>
+      /**
+       * Self-Healing LocalStorage Script
+       *
+       * This script runs before the main application bundle to prevent crashes from
+       * corrupted JSON data in localStorage. It iterates through a predefined list
+       * of keys, attempts to parse their values, and removes any key that contains
+       * malformed JSON. This is a non-destructive way to "heal" a user's session
+       * without logging them out or resetting all their data.
+       */
+      (function() {
+        // Configuration: Add localStorage keys that should contain valid JSON here.
+        const keysToValidate = [
+          'sb-bbxhdxdgharlyyioeblm-auth-token', // Supabase auth token for this project
+          'app_user_settings',                 // Example user settings key
+          'app_theme'                          // Example theme key
+        ];
+
+        keysToValidate.forEach(function(key) {
+          try {
+            const value = localStorage.getItem(key);
+            if (value) {
+              // The core of the check: attempt to parse the stored value.
+              // If this fails, the catch block will execute.
+              JSON.parse(value);
+            }
+          } catch (e) {
+            // If we are in here, the JSON.parse failed, meaning the data is corrupted.
+            console.warn(
+              `LocalStorage Heal: Key "${key}" contained corrupted data. Removing it to prevent app crash.`
+            );
+            localStorage.removeItem(key);
+          }
+        });
+      })();
+    </script>
+
+<!-- Libraries for report generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.2.1",
+    "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm",
+    "uuid": "https://jspm.dev/uuid",
+    "path": "https://aistudiocdn.com/path@^0.12.7",
+    "vite": "https://aistudiocdn.com/vite@^7.2.1",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0",
+    "daisyui": "https://aistudiocdn.com/daisyui@^5.5.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-EZVcE4NK.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-vep1-nmW.css">
+</head>
+  <body class="font-sans">
+    <div id="root"></div>
+</body>
+</html>
